@@ -1,0 +1,107 @@
+<FrameLayout android:id="@+id/container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="20dp"
+            >
+
+            <ImageView
+                android:id="@+id/star_image"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img"
+                android:adjustViewBounds="true"
+                android:layout_width="match_parent"
+                android:layout_height="300dp" />
+
+            <LinearLayout
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/open_url"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="@color/myPrimaryColor"
+                    android:layout_width="0dp"
+                    android:layout_weight="40"
+                    android:textColor="@android:color/white"
+                    android:layout_marginRight="8dp"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:text="@string/open_url"/>
+
+                <Button
+                    android:id="@+id/share"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="@color/myPrimaryColor"
+                    android:layout_width="0dp"
+                    android:textColor="@android:color/white"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="40"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:text="@string/share"/>
+
+                </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:paddingTop="0dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    tools:text = "dance, electronics"
+                    android:id="@+id/genres"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    tools:text = "5 albums, 7 songs"
+                    android:id="@+id/counts"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/descr_title"
+                    android:text="@string/biografy"
+                    android:textSize="24sp"
+                    android:layout_marginBottom="10dp"
+
+                    android:textColor="@android:color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    tools:text="description about star...."
+                    android:id="@+id/description"
+                    android:textColor="@android:color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
