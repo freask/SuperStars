@@ -37,4 +37,6 @@ dependencies {
     compile 'com.octo.android.robospice:robospice-ormlite:1.4.14'
     compile 'com.octo.android.robospice:robospice-retrofit:1.4.14'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.github.nirhart:parallaxscroll:1.0'
+    compile "com.daimajia.swipelayout:library:1.2.0@aar"
 }

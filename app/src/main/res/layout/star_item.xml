@@ -1,52 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
-    android:padding="16dp"
-    android:layout_marginBottom="1dp"
+
+<com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/item_image"
-        android:layout_gravity="center_vertical"
-        android:layout_marginRight="16dp"
-        android:layout_width="115dp"
-        android:layout_height="115dp" />
-
-    <LinearLayout
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!-- Bottom View Start-->
+    <RelativeLayout
+        android:padding="16dp"
         android:orientation="vertical"
-        android:layout_weight="40"
-        android:layout_width="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp" >
+        android:background="@color/myPrimaryColor"
+        android:id="@+id/bottom_wrapper"
+        android:layout_width="wrap_content"
+        android:weightSum="1"
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/name"
-            tools:text="Usher"
-            android:textColor="@android:color/black"
-            android:layout_width="wrap_content"
-            android:textSize="18sp"
-            android:layout_marginBottom="8dp"
-            android:layout_height="wrap_content" />
+        <ImageButton
+            android:layout_alignParentTop="true"
+            android:id="@+id/open_url"
+            android:tint="@android:color/white"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_open_in_browser_black_24dp"
+            android:layout_width="48dp"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center"
+            android:layout_height="48dp" />
 
-        <TextView
-            android:id="@+id/genres"
-            tools:text="electronics, rap"
-            android:layout_width="wrap_content"
-            android:textSize="15sp"
-            android:layout_marginBottom="25dp"
-            android:layout_height="wrap_content" />
+        <ImageButton
+            android:layout_alignParentBottom="true"
+            android:id="@+id/share"
+            android:tint="@android:color/white"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_share_black_24dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center" />
 
-        <TextView
-            android:id="@+id/counts"
-            tools:text="8 songs, 5 albums"
-            android:layout_width="wrap_content"
-            android:textSize="15sp"
-            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <!-- Bottom View End-->
+
+    <!-- Surface View Start -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:layout_marginBottom="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/item_image"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="16dp"
+            android:layout_width="115dp"
+            android:layout_height="115dp" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="40"
+            android:layout_width="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp" >
+
+            <TextView
+                android:id="@+id/name"
+                tools:text="Usher"
+                android:textColor="@android:color/black"
+                android:layout_width="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginBottom="8dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/genres"
+                tools:text="electronics, rap"
+                android:layout_width="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginBottom="25dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/counts"
+                tools:text="8 songs, 5 albums"
+                android:layout_width="wrap_content"
+                android:textSize="15sp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
-
-
-</LinearLayout>
+    <!-- Surface View End -->
+</com.daimajia.swipe.SwipeLayout>

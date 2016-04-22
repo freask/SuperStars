@@ -17,5 +17,6 @@
 
     <string name="counts_str" formatted="false">%s альбомов%s%s песен</string>
     <string name="biografy" formatted="false">Биография</string>
+    <string name="connection_error">Не удаётся подключиться к серверу для загрузки данных</string>
 
 </resources>

@@ -61,6 +61,7 @@ public class BaseActivity extends ActionBarActivity implements NavigationDrawerC
         return super.onCreateView(parent, name, context, attrs);
     }
 
+    /* Nav Drawer Initialisation */
     public void navigationDrawerSetUp() {
         mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(mToolbar);

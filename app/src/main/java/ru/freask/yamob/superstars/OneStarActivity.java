@@ -35,6 +35,7 @@ public class OneStarActivity extends BaseActivity implements View.OnClickListene
         if(star_id == -1)
          return;
 
+        //if model not find in db, we stop it
         try {
             StarDao starDao = (StarDao) ormHelper.getDaoByClass(Star.class);
             star = starDao.queryForId(Long.parseLong(star_id.toString()));

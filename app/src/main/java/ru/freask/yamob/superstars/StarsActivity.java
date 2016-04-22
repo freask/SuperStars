@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.octo.android.robospice.persistence.DurationInMillis;
@@ -43,6 +44,8 @@ public class StarsActivity extends BaseActivity {
                     StarDao starDao = (StarDao) ormHelper.getDaoByClass(Star.class);
                     Star starSearched = starDao.findStar(star.getId());
                     int star_id;
+
+                    //put model to db for access from next activity
                     if (starSearched == null)
                     {
                         starDao.create(star);
@@ -75,9 +78,7 @@ public class StarsActivity extends BaseActivity {
 
         @Override
         public void onRequestFailure(SpiceException spcExcptn) {
-            System.out.println("-------------------------------------");
-            spcExcptn.getCause().printStackTrace();
-            System.out.println("-------------------------------------");
+            Toast.makeText(context, R.string.connection_error, Toast.LENGTH_SHORT).show();
         }
 
         @Override
