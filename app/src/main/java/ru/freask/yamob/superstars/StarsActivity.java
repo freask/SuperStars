@@ -37,30 +37,7 @@ public class StarsActivity extends BaseActivity {
         starListView = (ListView) findViewById(R.id.listViewStars);
         starListAdapter = new StarsAdapter(this);
         starListView.setAdapter(starListAdapter);
-        starListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Star star = (Star) starListView.getItemAtPosition(position);
-                try {
-                    StarDao starDao = (StarDao) ormHelper.getDaoByClass(Star.class);
-                    Star starSearched = starDao.findStar(star.getId());
-                    int star_id;
 
-                    //put model to db for access from next activity
-                    if (starSearched == null)
-                    {
-                        starDao.create(star);
-                        star_id = star.getId();
-                    } else {
-                        star_id = starSearched.getId();
-                    }
-                    Intent i = new Intent(context, OneStarActivity.class);
-                    i.putExtra("star_id", star_id);
-                    context.startActivity(i);
-                } catch (SQLException e) {
-
-                }
-            }
-        });
     }
 
     protected void onResume() {

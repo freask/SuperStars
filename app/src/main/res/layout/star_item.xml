@@ -3,6 +3,7 @@
 <com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/swipe_layout"
     xmlns:tools="http://schemas.android.com/tools">
     <!-- Bottom View Start-->
     <RelativeLayout

@@ -6,27 +6,36 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.daimajia.swipe.SwipeLayout;
+import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.squareup.picasso.Picasso;
 
+import java.sql.SQLException;
+
+import ru.freask.yamob.superstars.OneStarActivity;
 import ru.freask.yamob.superstars.R;
 import ru.freask.yamob.superstars.StarsActivity;
+import ru.freask.yamob.superstars.db.OrmHelper;
+import ru.freask.yamob.superstars.db.StarDao;
 import ru.freask.yamob.superstars.models.Star;
 
 public class StarsAdapter extends ArrayAdapter<Star> {
     Context context;
+    static OrmHelper ormHelper;
 
     public StarsAdapter(Context context) {
         super(context, android.R.layout.simple_list_item_1);
         this.context = context;
+        ormHelper = OpenHelperManager.getHelper(context, OrmHelper.class);
     }
 
-    //TODO click fires after swipe and opens oneStarActivity
     static class ViewHolder{
         TextView name;
         TextView genres;
@@ -34,6 +43,7 @@ public class StarsAdapter extends ArrayAdapter<Star> {
         ImageView image;
         ImageButton link;
         ImageButton share;
+        SwipeLayout swipeLayout;
 
         void populateItem(final Context context, final Star star) {
             name.setText(star.getLabel());
@@ -47,6 +57,7 @@ public class StarsAdapter extends ArrayAdapter<Star> {
                     context.startActivity(openlink);
                 }
             });
+            link.setVisibility(star.getUrl() == null ? View.INVISIBLE : View.VISIBLE);
 
             share.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -59,6 +70,31 @@ public class StarsAdapter extends ArrayAdapter<Star> {
                 }
             });
             Picasso.with(context).load(star.getThumbnail()).into(image);
+
+            swipeLayout.getSurfaceView().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    try {
+                        StarDao starDao = (StarDao) ormHelper.getDaoByClass(Star.class);
+                        Star starSearched = starDao.findStar(star.getId());
+                        int star_id;
+
+                        //put model to db for access from next activity
+                        if (starSearched == null)
+                        {
+                            starDao.create(star);
+                            star_id = star.getId();
+                        } else {
+                            star_id = starSearched.getId();
+                        }
+                        Intent i = new Intent(context, OneStarActivity.class);
+                        i.putExtra("star_id", star_id);
+                        context.startActivity(i);
+                    } catch (SQLException e) {
+
+                    }
+                }
+            });
         }
     }
     @Override
@@ -75,6 +111,7 @@ public class StarsAdapter extends ArrayAdapter<Star> {
             holder.image = (ImageView) convertView.findViewById(R.id.item_image);
             holder.link = (ImageButton) convertView.findViewById(R.id.open_url);
             holder.share = (ImageButton) convertView.findViewById(R.id.share);
+            holder.swipeLayout = (SwipeLayout) convertView.findViewById(R.id.swipe_layout);
 
 
             convertView.setTag(holder);

@@ -50,6 +50,8 @@ public class OneStarActivity extends BaseActivity implements View.OnClickListene
         counts = (TextView) findViewById(R.id.counts);
         description = (TextView) findViewById(R.id.description);
         openLink.setOnClickListener(this);
+        openLink.setVisibility(star.getUrl() == null ? View.INVISIBLE : View.VISIBLE);
+
         shareBut.setOnClickListener(this);
 
         Picasso.with(context).load(star.getImage()).into(image);
