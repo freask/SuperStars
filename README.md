@@ -1,3 +1,3 @@
 # SuperStars
 
-Test task for Yandex.Mobilization
+Test task
